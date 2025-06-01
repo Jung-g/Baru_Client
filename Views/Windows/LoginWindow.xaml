@@ -1,0 +1,39 @@
+﻿<Window x:Class="Baru_Client.Views.Windows.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="clr-namespace:Wpf.Ui.Controls;assembly=Wpf.Ui"
+        mc:Ignorable="d"
+        Title="로그인" Height="400" Width="350"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- 제목 -->
+        <TextBlock Text="Baru" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- 로그인 폼 -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <TextBlock Text="아이디" Margin="0,0,0,4"/>
+            <TextBox Text="{Binding Userid, UpdateSourceTrigger=PropertyChanged}" Height="35"/>
+
+            <TextBlock Text="비밀번호" Margin="0,15,0,4"/>
+            <PasswordBox Height="35" PasswordChanged="PasswordBox_PasswordChanged"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <ui:Button Content="로그인" Width="100" Command="{Binding LoginCommand}" Margin="0,0,10,0"/>
+                <ui:Button Content="회원가입" Width="100" Click="SignupButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- 하단 버전 표기 -->
+        <TextBlock Grid.Row="2" Text="v1.0.0" HorizontalAlignment="Right" FontSize="10" Foreground="Gray" Margin="0,10,0,0"/>
+    </Grid>
+</Window>

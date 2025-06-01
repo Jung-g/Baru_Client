@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="Baru_Client.Views.Pages.ExerciseTrendPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+    Title="운동 추이">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ui:TextBlock Grid.Row="0" Text="운동량 변화 추이 (월별)" FontSize="28" FontWeight="SemiBold" Margin="0,0,0,20"/>
+        
+        <!-- 월 선택 등 상단 컨트롤 -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Top" Margin="0,0,0,20">
+            <TextBlock Text="월 선택:" FontWeight="Bold" VerticalAlignment="Center"/>
+            <ComboBox
+                ItemsSource="{Binding AvailableMonths}"
+                SelectedItem="{Binding SelectedMonth, Mode=TwoWay}"
+                Margin="10,0,0,0"
+                Width="120"/>
+            <TextBlock Text="{Binding SelectedMonth}" Margin="20,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- 운동 추이 라인차트 -->
+        <lvc:CartesianChart
+            Grid.Row="2"
+            Series="{Binding TrendSeries}"
+            AxisX="{Binding TrendAxisX}"
+            AxisY="{Binding TrendAxisY}"
+            Margin="0,0,0,0"
+            LegendLocation="Right"/>
+    </Grid>
+</Page>
