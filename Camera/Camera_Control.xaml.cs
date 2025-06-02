@@ -37,7 +37,23 @@ namespace Baru_Client.Camera
 
         private async Task CameraLoopAsync()
         {
-            _capture = new VideoCapture(0, VideoCapture.API.DShow);
+            for (int cam = 0; cam <= 3 ; cam++)
+            {
+                var tempcapture = new VideoCapture(0, VideoCapture.API.DShow);
+                if (tempCapture.IsOpened)
+                {
+                    _capture = tempCapture;
+                    break;
+                }
+                tempCapture.Dispose();
+            }
+            
+            if (_capture == null || !_capture.IsOpened)
+            {
+                _isCameraActive = false;
+                MessageBox.Show("카메라가 연결되지 않았습니다", "카메라 연결오류");
+                return;
+            }
             _frame = new Mat();
 
             while (_isCameraActive)
