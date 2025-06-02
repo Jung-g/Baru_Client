@@ -15,7 +15,7 @@
 
         <ui:TextBlock Grid.Row="0" Text="일별 동작 종류별 비율 분석"
            FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
-        
+
         <!-- 날짜 선택(DatePicker) -->
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Grid.Row="1" Margin="0,0,0,20">
             <TextBlock Text="날짜 선택:" VerticalAlignment="Center" FontWeight="Bold"/>

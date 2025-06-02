@@ -1,4 +1,5 @@
-﻿using Baru_Client.ViewModels.Pages;
+﻿using Baru_Client.Alarmes;
+using Baru_Client.ViewModels.Pages;
 using Baru_Client.ViewModels.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -30,9 +31,9 @@ namespace Baru_Client.Views.Windows
         {
             Dispatcher.Invoke(() =>
             {
-                MessageBox.Show("회원가입 완료. 로그인 창으로 돌아갑니다.", "회원가입", MessageBoxButton.OK, MessageBoxImage.Information);
-                _loginWindow.Show();
-                Close();
+                //MessageBox.Show("회원가입 완료. 로그인 창으로 돌아갑니다.", "회원가입", MessageBoxButton.OK, MessageBoxImage.Information);
+                Alarme.Instance.SetSnack(SnackBar);
+                Alarme.ShowSnackbar("회원가입 완료", "알림", Wpf.Ui.Controls.ControlAppearance.Success);
             });
         }
 
@@ -40,7 +41,8 @@ namespace Baru_Client.Views.Windows
         {
             Dispatcher.Invoke(() =>
             {
-                MessageBox.Show("회원가입 실패. 다시 시도해주세요.", "회원가입", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Alarme.Instance.SetSnack(SnackBar);
+                Alarme.ShowSnackbar("다시 시도해주세요.", "회원가입 실패");
             });
         }
 

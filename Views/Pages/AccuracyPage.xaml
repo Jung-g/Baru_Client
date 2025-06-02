@@ -31,7 +31,7 @@
         <!-- 정확도 라인차트 -->
         <lvc:CartesianChart Grid.Row="2" Series="{Binding AccuracySeries}" Margin="0,0,0,0" LegendLocation="Right" Hoverable="True">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="일" FontSize="12" FontWeight="Bold" />
+                <lvc:Axis Title="횟수" FontSize="12" FontWeight="Bold" />
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis Title="정확도 (%)" MinValue="0" MaxValue="100" FontSize="12" FontWeight="Bold"/>

@@ -40,12 +40,12 @@ namespace Baru_Client.Camera
             for (int cam = 0; cam <= 3 ; cam++)
             {
                 var tempcapture = new VideoCapture(0, VideoCapture.API.DShow);
-                if (tempCapture.IsOpened)
+                if (tempcapture.IsOpened)
                 {
-                    _capture = tempCapture;
+                    _capture = tempcapture;
                     break;
                 }
-                tempCapture.Dispose();
+                tempcapture.Dispose();
             }
             
             if (_capture == null || !_capture.IsOpened)

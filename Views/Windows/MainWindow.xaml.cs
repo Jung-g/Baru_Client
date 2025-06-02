@@ -1,13 +1,17 @@
-﻿using Baru_Client.ViewModels.Windows;
+﻿using Baru_Client.Alarmes;
+using Baru_Client.ViewModels.Windows;
+using System.Timers;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
+using Timer = System.Timers.Timer;
 
 namespace Baru_Client.Views.Windows
 {
     public partial class MainWindow : INavigationWindow
     {
+
         public MainWindow(MainWindowViewModel viewModel, INavigationViewPageProvider pageProvider, INavigationService navService)
         {
             InitializeComponent();
@@ -19,9 +23,14 @@ namespace Baru_Client.Views.Windows
 
             RootNavigation.SetPageProviderService(pageProvider);
             navService.SetNavigationControl(RootNavigation);
+
+
+            Alarme.Instance.SetSnack(SnackbarPresenter);
         }
 
         public MainWindowViewModel ViewModel { get; }
+
+
         public INavigationView GetNavigation() => RootNavigation;
         public bool Navigate(Type pageType) => RootNavigation.Navigate(pageType);
         public void SetPageService(INavigationViewPageProvider provider) => RootNavigation.SetPageProviderService(provider);
@@ -34,10 +43,10 @@ namespace Baru_Client.Views.Windows
             Application.Current.Shutdown();
         }
 
+
         public void SetServiceProvider(IServiceProvider serviceProvider)
         {
             // 필요시 구현
         }
-
     }
 }

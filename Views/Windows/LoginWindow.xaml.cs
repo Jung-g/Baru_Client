@@ -1,4 +1,5 @@
-﻿using Baru_Client.Services;
+﻿using Baru_Client.Alarmes;
+using Baru_Client.Services;
 using Baru_Client.ViewModels.Pages;
 using Baru_Client.ViewModels.Windows;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,7 +36,8 @@ namespace Baru_Client.Views.Windows
         {
             Dispatcher.Invoke(() =>
             {
-                MessageBox.Show(this, "로그인 실패. 아이디 또는 비밀번호를 확인하세요.", "로그인", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Alarme.Instance.SetSnack(SnackBar);
+                Alarme.ShowSnackbar("아이디 또는 비밀번호를 확인하세요.", "로그인 실패");
             });
         }
 

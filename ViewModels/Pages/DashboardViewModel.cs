@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Baru_Client.FastAPI;
 using Baru_Client.Data;
+using Baru_Client.Alarmes;
 
 namespace Baru_Client.ViewModels.Pages
 {
@@ -43,7 +44,7 @@ namespace Baru_Client.ViewModels.Pages
             // 운동명, 목표치, 표기명 매핑표
             var exerciseMap = new[]
             {
-                new { JsonKey = "Squat", Goal = beforeInfo.GoalA ?? 0, Display = "스쿼트" },
+                new { JsonKey = "Squart", Goal = beforeInfo.GoalA ?? 0, Display = "스쿼트" },
                 new { JsonKey = "lunge", Goal = beforeInfo.GoalB ?? 0, Display = "런지" },
                 new { JsonKey = "sidestretch", Goal = beforeInfo.GoalC ?? 0, Display = "사이드 스트레칭" }
             };
@@ -90,11 +91,11 @@ namespace Baru_Client.ViewModels.Pages
 
                 if (success)
                 {
-                    MessageBox.Show("저장 성공");
+                    Alarme.ShowSnackbar("저장 성공", "알람", Wpf.Ui.Controls.ControlAppearance.Success);
                 }
                 else
                 {
-                    MessageBox.Show("저장 실패");
+                    Alarme.ShowSnackbar("저장 실패", "알람");
                 }
             }
         }
@@ -121,7 +122,7 @@ namespace Baru_Client.ViewModels.Pages
 
         [ObservableProperty]
         private int currentCount;
-        
+
         public double ProgressBarValue => Goal > 0 ? Math.Min(CurrentCount * 100.0 / Goal, 100) : 0;
 
         public double AchievementPercentage => Goal > 0 ? (CurrentCount * 100.0 / Goal) : 0;

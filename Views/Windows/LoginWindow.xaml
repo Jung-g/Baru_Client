@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="clr-namespace:Wpf.Ui.Controls;assembly=Wpf.Ui"
         mc:Ignorable="d"
-        Title="로그인" Height="400" Width="350"
+        Title="로그인" Height="400" Width="395"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
 
@@ -32,6 +32,9 @@
                 <ui:Button Content="회원가입" Width="100" Click="SignupButton_Click"/>
             </StackPanel>
         </StackPanel>
+
+        <!-- 스낵바 ( 알람 )-->
+        <ui:SnackbarPresenter Grid.Row="1" x:Name="SnackBar"/>
 
         <!-- 하단 버전 표기 -->
         <TextBlock Grid.Row="2" Text="v1.0.0" HorizontalAlignment="Right" FontSize="10" Foreground="Gray" Margin="0,10,0,0"/>
