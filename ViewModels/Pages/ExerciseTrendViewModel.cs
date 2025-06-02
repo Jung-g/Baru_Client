@@ -137,7 +137,7 @@ namespace Baru_Client.ViewModels.Pages
                 {
                     Title = exerciseName switch
                     {
-                        "Squat" => "스쿼트",
+                        "Squart" => "스쿼트",
                         "lunge" => "런지",
                         "sidestretch" => "사이드 스트레칭",
                         _ => exerciseName  // 위에 해당하지 않는 경우 그대로 표시

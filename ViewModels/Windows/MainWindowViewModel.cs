@@ -1,11 +1,19 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Baru_Client.Alarmes;
+using Baru_Client.Views.Windows;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Timers;
+using System.Windows.Automation;
 using Wpf.Ui.Controls;
+using Timer = System.Timers.Timer;
 
 namespace Baru_Client.ViewModels.Windows
 {
     public partial class MainWindowViewModel : ObservableObject
     {
+        private static int _time = 1;
+
+
         [ObservableProperty]
         private string applicationTitle = "Baru";
 
@@ -15,9 +23,6 @@ namespace Baru_Client.ViewModels.Windows
         [ObservableProperty]
         private ObservableCollection<object> footerMenuItems;
 
-        // 필요시 트레이 메뉴 (TrayMenuItems)도 관리, 불필요하면 제거
-        //[ObservableProperty]
-        //private ObservableCollection<MenuItem> trayMenuItems;
 
         public MainWindowViewModel()
         {
@@ -66,11 +71,24 @@ namespace Baru_Client.ViewModels.Windows
                 }
             };
 
-            // 트레이 메뉴(필요시)
-            //trayMenuItems = new ObservableCollection<MenuItem>
-            //{
-            //    new MenuItem { Header = "Home", Tag = "tray_home" }
-            //};
+            OnInit();
         }
+        private void OnInit()
+        {
+            // 1시간 마다 알람
+            Timer timer = new Timer(TimeSpan.FromHours(1).TotalMilliseconds);
+            timer.Elapsed += OnTimedEvent;
+            timer.AutoReset = true;
+            timer.Enabled = true;
+
+            // 스트레칭 유도 알람
+            TimerExample.StartTimer();
+        }
+        public void OnTimedEvent(object? sender, ElapsedEventArgs e)
+        {
+            // 서비스 이용시간 알람
+            Toast.ShowToast($"이용하신지 {_time++}시간 되셨습니다.");
+        }
+
     }
 }

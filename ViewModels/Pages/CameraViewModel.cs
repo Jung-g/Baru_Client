@@ -1,6 +1,7 @@
 ﻿using Timer = System.Timers.Timer;
 using Baru_Client.Data;
 using Baru_Client.FastAPI;
+using Baru_Client.Alarmes;
 
 namespace Baru_Client.ViewModels.Pages
 {
@@ -19,7 +20,7 @@ namespace Baru_Client.ViewModels.Pages
         public event Action<string>? OnUidReceived;
         public event Action<string>? OnVideoPlayRequested;
         public event Action? OnStopRequested;
-        
+
         [RelayCommand]
         private async Task PlaySquatAsync() => await StartExerciseAsync("Squat", "Videos/squat.mp4");
 
@@ -77,6 +78,9 @@ namespace Baru_Client.ViewModels.Pages
             _pollingTimer.Elapsed += async (s, e) => await PollCurrentAsync();
             _pollingTimer.AutoReset = true;
             _pollingTimer.Start();
+
+            // 운동 안한지 1시간 단위로 스트레칭 유도 알람
+            TimerExample.StartTimer();
         }
 
         private async Task PollCurrentAsync()
