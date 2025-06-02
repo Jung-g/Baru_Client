@@ -8,3 +8,6 @@
 ## 서버 링크
   * https://github.com/Jung-g/Baru_DBServer.git
   * https://github.com/Jung-g/Baru_MotionServer.git
+## Redis 설치
+  * https://github.com/tporadowski/redis/releases
+  * 설치완료 후 해당 폴더에서 cmd 에 redis-server로 켜진거 확인
